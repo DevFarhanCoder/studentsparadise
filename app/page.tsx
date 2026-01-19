@@ -8,6 +8,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import StatsCounter from "@/components/StatsCounter";
 import EnquiryModal from "@/components/EnquiryModal";
 import { courses, studentsParadiseFeatures } from "@/data/studentsParadise";
+import { slugify } from "@/lib/slugify";
 
 const categories = [
   { id: "all", label: "All Programs" },
@@ -245,10 +246,7 @@ export default function Home() {
           {/* Course Cards - Show limited */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCourses.slice(0, 6).map((course, index) => {
-              const courseSlug = course.title
-                .toLowerCase()
-                .replace(/\s+/g, "-")
-                .replace(/[^\w-]/g, "");
+              const courseSlug = slugify(course.title);
 
               return (
                 <Link key={course.title} href={`/students-paradise/courses/${courseSlug}`}>

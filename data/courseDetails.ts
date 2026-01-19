@@ -161,8 +161,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "Priya Sharma, Co-Founder",
     fees: "₹40,000"
   },
-  "python--aiml": {
-    slug: "python--aiml",
+  "python-aiml": {
+    slug: "python-aiml",
     title: "Python & AI/ML",
     category: "IT",
     duration: "5 Months",
@@ -198,8 +198,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "Rajesh Kumar, Founder",
     fees: "₹50,000"
   },
-  "11th--12th-science": {
-    slug: "11th--12th-science",
+  "11th-12th-science": {
+    slug: "11th-12th-science",
     title: "11th & 12th Science",
     category: "School",
     duration: "2 Years",
@@ -234,8 +234,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. RIZWAN, Founder",
     fees: "₹60,000 per year"
   },
-  "11th--12th-commerce": {
-    slug: "11th--12th-commerce",
+  "11th-12th-commerce": {
+    slug: "11th-12th-commerce",
     title: "11th & 12th Commerce",
     category: "School",
     duration: "2 Years",
@@ -270,8 +270,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹50,000 per year"
   },
-  "jee-main--advanced": {
-    slug: "jee-main--advanced",
+  "jee-main-advanced": {
+    slug: "jee-main-advanced",
     title: "JEE Main & Advanced",
     category: "Competitive",
     duration: "1-2 Years",
@@ -418,8 +418,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹35,000"
   },
-  "data-science--analytics": {
-    slug: "data-science--analytics",
+  "data-science-analytics": {
+    slug: "data-science-analytics",
     title: "Data Science & Analytics",
     category: "IT",
     duration: "6 Months",

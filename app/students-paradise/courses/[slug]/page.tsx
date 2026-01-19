@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Home, ChevronRight, Star, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import Head from "next/head";
+import { useParams, useRouter } from "next/navigation";
 import EnquiryModal from "@/components/EnquiryModal";
 import { courseDetails } from "@/data/courseDetails";
 
 export default function CourseDetailPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = params?.slug as string;
   const course = courseDetails[slug];
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -20,14 +20,25 @@ export default function CourseDetailPage() {
   useEffect(() => {
     if (course) {
       document.title = `${course.title} - Admission Open | Students Paradise`;
+    } else if (slug) {
+      // Course not found, redirect to courses page after showing error
+      console.error(`Course not found for slug: ${slug}`);
+      console.log("Available slugs:", Object.keys(courseDetails));
     }
-  }, [course]);
+  }, [course, slug]);
 
   if (!course) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-20 bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center pt-20 bg-[#0a1628]">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4 text-gray-900">Course Not Found</h1>
+          <h1 className="text-4xl font-bold mb-4 text-white">Course Not Found</h1>
+          <p className="text-gray-400 mb-6">The course "{slug}" could not be found.</p>
+          <Link
+            href="/courses"
+            className="px-6 py-3 bg-gradient-to-r from-yellow-400 to-amber-500 text-[#0a1628] rounded-lg font-bold"
+          >
+            View All Courses
+          </Link>
           <Link href="/courses" className="text-yellow-600 hover:underline">
             Back to Courses
           </Link>

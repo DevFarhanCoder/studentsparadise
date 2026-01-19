@@ -6,6 +6,7 @@ import { Clock, GraduationCap } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import { courses } from "@/data/studentsParadise";
+import { slugify } from "@/lib/slugify";
 
 const categories = [
   { id: "all", label: "All Programs" },
@@ -73,10 +74,7 @@ export default function CoursesPage() {
           {/* Course Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCourses.map((course, index) => {
-              const courseSlug = course.title
-                .toLowerCase()
-                .replace(/\s+/g, "-")
-                .replace(/[^\w-]/g, "");
+              const courseSlug = slugify(course.title);
 
               return (
                 <Link key={course.title} href={`/students-paradise/courses/${courseSlug}`}>
