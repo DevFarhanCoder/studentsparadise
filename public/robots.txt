@@ -1,0 +1,20 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow admin or private sections (if any)
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://studentsparadise.edu/sitemap.xml
+
+# Allow search engines to crawl all educational content
+Allow: /courses/
+Allow: /students-paradise/
+Allow: /about/
+Allow: /contact/
+Allow: /gallery/
+
+# Crawl delay (optional, adjust as needed)
+Crawl-delay: 1
