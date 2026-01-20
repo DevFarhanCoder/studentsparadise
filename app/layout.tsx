@@ -10,7 +10,7 @@ import CodeProtection from "@/components/CodeProtection";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://studentsparadise.edu"),
+  metadataBase: new URL("https://studentsparadise.in"),
   title: {
     default:
       "Students Paradise - Best Coaching Institute for 11th, 12th, JEE, NEET & IT Courses in India",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://studentsparadise.edu",
+    url: "https://studentsparadise.in",
     title: "Students Paradise - Best Coaching Institute for 11th, 12th, JEE, NEET & IT Courses",
     description:
       "Transform your future with India's leading education platform. Expert coaching for school students, competitive exams (JEE, NEET), commerce programs, and cutting-edge IT courses.",
@@ -103,7 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://studentsparadise.edu" />
+        <link rel="canonical" href="https://studentsparadise.in" />
         <meta name="google-site-verification" content="your-verification-code" />
       </head>
       <body className={inter.className}>

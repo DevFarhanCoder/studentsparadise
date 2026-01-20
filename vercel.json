@@ -3,6 +3,13 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "installCommand": "npm install",
+  "redirects": [
+    {
+      "source": "https://www.studentsparadise.in/:path*",
+      "destination": "https://studentsparadise.in/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
