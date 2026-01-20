@@ -290,14 +290,20 @@ export default function ContactPage() {
             {/* Map & Additional Info */}
             <AnimatedSection delay={0.2}>
               <div className="space-y-8">
-                {/* Map Placeholder */}
+                {/* Google Maps */}
                 <div className="bg-[#1a2942] p-8 rounded-2xl shadow-xl border border-yellow-500/20">
                   <h3 className="text-2xl font-bold mb-4 text-white">Find Us</h3>
-                  <div className="aspect-video bg-[#0d1d35] rounded-lg flex items-center justify-center border border-yellow-500/10">
-                    <div className="text-center">
-                      <MapPin size={48} className="text-gray-500 mx-auto mb-2" />
-                      <p className="text-gray-400">Map will be integrated here</p>
-                    </div>
+                  <div className="aspect-video rounded-lg overflow-hidden border-2 border-yellow-500/20">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.8401367685137!2d72.8634971!3d19.289317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b15dafb617d3%3A0x970bed44f4a87361!2sStudents%20Paradise!5e0!3m2!1sen!2sin!4v1768875074762!5m2!1sen!2sin"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Students Paradise Location"
+                    />
                   </div>
                 </div>
 
