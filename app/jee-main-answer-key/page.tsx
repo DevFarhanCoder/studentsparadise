@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertCircle, CheckCircle, FileText, X, Download } from "lucide-react";
 import Link from "next/link";
@@ -18,12 +18,73 @@ interface PaperData {
   shifts: ShiftData[];
 }
 
+interface Document {
+  _id: string;
+  title: string;
+  type: string;
+  category: string;
+  subject: string;
+  year: string;
+  session: string;
+  shift: string;
+  date: string;
+  fileUrl: string;
+  fileName: string;
+}
+
 export default function JEEMainAnswerKey() {
   const [selectedSession, setSelectedSession] = useState<"session1" | "session2">("session1");
   const [showDownloadForm, setShowDownloadForm] = useState(false);
   const [selectedPaper, setSelectedPaper] = useState<{ subject: string; url: string } | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [documents, setDocuments] = useState<Document[]>([]);
+
+  // Fetch documents from backend
+  useEffect(() => {
+    const fetchDocuments = async () => {
+      try {
+        const isLocalhost =
+          typeof window !== "undefined" && window.location.hostname === "localhost";
+        const API_URL = isLocalhost
+          ? "http://localhost:5000/api/documents"
+          : "https://studentsparadise-backend.onrender.com/api/documents";
+
+        const response = await fetch(API_URL);
+        const data = await response.json();
+
+        // Filter for JEE Main Answer Keys
+        const jeeDocuments = data.documents.filter(
+          (doc: Document) => doc.category === "JEE Main" && doc.type === "Answer Key"
+        );
+        setDocuments(jeeDocuments);
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+      }
+    };
+
+    fetchDocuments();
+  }, []);
+
+  // Helper function to get document URL for specific date, shift, and subject
+  const getDocumentUrl = (date: string, shiftNumber: string, subject: string, session: string) => {
+    const doc = documents.find(
+      (d) =>
+        d.date === date &&
+        d.shift === shiftNumber &&
+        d.subject.toLowerCase() === subject.toLowerCase() &&
+        d.session === session
+    );
+
+    if (doc) {
+      const isLocalhost = typeof window !== "undefined" && window.location.hostname === "localhost";
+      const BASE_URL = isLocalhost
+        ? "http://localhost:5000"
+        : "https://studentsparadise-backend.onrender.com";
+      return `${BASE_URL}${doc.fileUrl}`;
+    }
+    return null;
+  };
 
   const session1Papers: PaperData[] = [
     {
@@ -361,7 +422,17 @@ export default function JEEMainAnswerKey() {
                     {(selectedSession === "session1" ? session1Papers : session2Papers).map(
                       (paper, dateIndex) => (
                         <>
-                          {paper.shifts.map((shift, shiftIndex) => (
+                          {paper.shifts.map((shift, shiftIndex) => {
+                            // Extract shift number from "Shift 1 (9:00 AM – 12:00 PM)"
+                            const shiftNumber = shift.shift.includes("Shift 1") ? "1" : "2";
+                            const sessionNumber = selectedSession === "session1" ? "1" : "2";
+                            
+                            // Get document URLs for each subject
+                            const physicsUrl = getDocumentUrl(paper.date, shiftNumber, "Physics", sessionNumber);
+                            const chemistryUrl = getDocumentUrl(paper.date, shiftNumber, "Chemistry", sessionNumber);
+                            const mathsUrl = getDocumentUrl(paper.date, shiftNumber, "Maths", sessionNumber);
+                            
+                            return (
                             <tr
                               key={`${dateIndex}-${shiftIndex}`}
                               className="border-b border-yellow-500/10"
@@ -378,9 +449,9 @@ export default function JEEMainAnswerKey() {
                                 {shift.shift}
                               </td>
                               <td className="px-6 py-4 text-center border-r border-yellow-500/20">
-                                {shift.physics ? (
+                                {physicsUrl ? (
                                   <button
-                                    onClick={() => handleDownloadClick("Physics", shift.physics)}
+                                    onClick={() => handleDownloadClick("Physics", physicsUrl)}
                                     className="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
                                   >
                                     <Download size={16} />
@@ -393,10 +464,10 @@ export default function JEEMainAnswerKey() {
                                 )}
                               </td>
                               <td className="px-6 py-4 text-center border-r border-yellow-500/20">
-                                {shift.chemistry ? (
+                                {chemistryUrl ? (
                                   <button
                                     onClick={() =>
-                                      handleDownloadClick("Chemistry", shift.chemistry)
+                                      handleDownloadClick("Chemistry", chemistryUrl)
                                     }
                                     className="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg hover:bg-green-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
                                   >
@@ -410,9 +481,9 @@ export default function JEEMainAnswerKey() {
                                 )}
                               </td>
                               <td className="px-6 py-4 text-center">
-                                {shift.maths ? (
+                                {mathsUrl ? (
                                   <button
-                                    onClick={() => handleDownloadClick("Mathematics", shift.maths)}
+                                    onClick={() => handleDownloadClick("Mathematics", mathsUrl)}
                                     className="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
                                   >
                                     <Download size={16} />
@@ -425,7 +496,7 @@ export default function JEEMainAnswerKey() {
                                 )}
                               </td>
                             </tr>
-                          ))}
+                          )})}
                         </>
                       )
                     )}
