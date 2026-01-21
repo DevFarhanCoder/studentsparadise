@@ -51,13 +51,14 @@ export default function JEEMainAnswerKey() {
           : "https://studentsparadise-backend.onrender.com/api/documents";
 
         const response = await fetch(API_URL);
-        const data = await response.json();
+        const result = await response.json();
 
-        // Filter for JEE Main Answer Keys
-        const jeeDocuments = data.documents.filter(
-          (doc: Document) => doc.category === "JEE Main" && doc.type === "Answer Key"
+        // Backend returns data in 'data' array, not 'documents'
+        const jeeDocuments = (result.data || []).filter(
+          (doc: Document) => doc.category === "JEE Main" && doc.type === "answer-key"
         );
         setDocuments(jeeDocuments);
+        console.log("Fetched documents:", jeeDocuments);
       } catch (error) {
         console.error("Error fetching documents:", error);
       }
@@ -66,14 +67,45 @@ export default function JEEMainAnswerKey() {
     fetchDocuments();
   }, []);
 
+  // Helper function to convert date format from "21 January 2026" to "22 Jan 2026"
+  const formatDateForComparison = (displayDate: string): string => {
+    // Convert "21 January 2026" to "21 Jan 2026"
+    const parts = displayDate.split(" ");
+    if (parts.length === 3) {
+      const day = parts[0];
+      const monthMap: { [key: string]: string } = {
+        January: "Jan",
+        February: "Feb",
+        March: "Mar",
+        April: "Apr",
+        May: "May",
+        June: "Jun",
+        July: "Jul",
+        August: "Aug",
+        September: "Sep",
+        October: "Oct",
+        November: "Nov",
+        December: "Dec",
+      };
+      const month = monthMap[parts[1]];
+      const year = parts[2];
+      return `${day} ${month} ${year}`;
+    }
+    return displayDate;
+  };
+
   // Helper function to get document URL for specific date, shift, and subject
   const getDocumentUrl = (date: string, shiftNumber: string, subject: string, session: string) => {
+    const formattedDate = formatDateForComparison(date);
+    const sessionFormat = `Session ${session}`; // Convert "1" to "Session 1"
+    const shiftFormat = `Shift ${shiftNumber}`; // Convert "1" to "Shift 1"
+
     const doc = documents.find(
       (d) =>
-        d.date === date &&
-        d.shift === shiftNumber &&
+        d.date === formattedDate &&
+        d.shift === shiftFormat &&
         d.subject.toLowerCase() === subject.toLowerCase() &&
-        d.session === session
+        d.session === sessionFormat
     );
 
     if (doc) {
@@ -426,77 +458,91 @@ export default function JEEMainAnswerKey() {
                             // Extract shift number from "Shift 1 (9:00 AM – 12:00 PM)"
                             const shiftNumber = shift.shift.includes("Shift 1") ? "1" : "2";
                             const sessionNumber = selectedSession === "session1" ? "1" : "2";
-                            
+
                             // Get document URLs for each subject
-                            const physicsUrl = getDocumentUrl(paper.date, shiftNumber, "Physics", sessionNumber);
-                            const chemistryUrl = getDocumentUrl(paper.date, shiftNumber, "Chemistry", sessionNumber);
-                            const mathsUrl = getDocumentUrl(paper.date, shiftNumber, "Maths", sessionNumber);
-                            
+                            const physicsUrl = getDocumentUrl(
+                              paper.date,
+                              shiftNumber,
+                              "Physics",
+                              sessionNumber
+                            );
+                            const chemistryUrl = getDocumentUrl(
+                              paper.date,
+                              shiftNumber,
+                              "Chemistry",
+                              sessionNumber
+                            );
+                            const mathsUrl = getDocumentUrl(
+                              paper.date,
+                              shiftNumber,
+                              "Maths",
+                              sessionNumber
+                            );
+
                             return (
-                            <tr
-                              key={`${dateIndex}-${shiftIndex}`}
-                              className="border-b border-yellow-500/10"
-                            >
-                              {shiftIndex === 0 && (
-                                <td
-                                  rowSpan={paper.shifts.length}
-                                  className="px-6 py-4 text-gray-300 font-semibold border-r border-yellow-500/20 bg-[#1a2942]"
-                                >
-                                  {paper.date}
+                              <tr
+                                key={`${dateIndex}-${shiftIndex}`}
+                                className="border-b border-yellow-500/10"
+                              >
+                                {shiftIndex === 0 && (
+                                  <td
+                                    rowSpan={paper.shifts.length}
+                                    className="px-6 py-4 text-gray-300 font-semibold border-r border-yellow-500/20 bg-[#1a2942]"
+                                  >
+                                    {paper.date}
+                                  </td>
+                                )}
+                                <td className="px-6 py-4 text-gray-300 border-r border-yellow-500/20">
+                                  {shift.shift}
                                 </td>
-                              )}
-                              <td className="px-6 py-4 text-gray-300 border-r border-yellow-500/20">
-                                {shift.shift}
-                              </td>
-                              <td className="px-6 py-4 text-center border-r border-yellow-500/20">
-                                {physicsUrl ? (
-                                  <button
-                                    onClick={() => handleDownloadClick("Physics", physicsUrl)}
-                                    className="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
-                                  >
-                                    <Download size={16} />
-                                    <span>Download</span>
-                                  </button>
-                                ) : (
-                                  <span className="px-4 py-2 bg-gray-700/50 text-gray-500 rounded-lg text-sm font-semibold cursor-not-allowed">
-                                    Available Soon
-                                  </span>
-                                )}
-                              </td>
-                              <td className="px-6 py-4 text-center border-r border-yellow-500/20">
-                                {chemistryUrl ? (
-                                  <button
-                                    onClick={() =>
-                                      handleDownloadClick("Chemistry", chemistryUrl)
-                                    }
-                                    className="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg hover:bg-green-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
-                                  >
-                                    <Download size={16} />
-                                    <span>Download</span>
-                                  </button>
-                                ) : (
-                                  <span className="px-4 py-2 bg-gray-700/50 text-gray-500 rounded-lg text-sm font-semibold cursor-not-allowed">
-                                    Available Soon
-                                  </span>
-                                )}
-                              </td>
-                              <td className="px-6 py-4 text-center">
-                                {mathsUrl ? (
-                                  <button
-                                    onClick={() => handleDownloadClick("Mathematics", mathsUrl)}
-                                    className="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
-                                  >
-                                    <Download size={16} />
-                                    <span>Download</span>
-                                  </button>
-                                ) : (
-                                  <span className="px-4 py-2 bg-gray-700/50 text-gray-500 rounded-lg text-sm font-semibold cursor-not-allowed">
-                                    Available Soon
-                                  </span>
-                                )}
-                              </td>
-                            </tr>
-                          )})}
+                                <td className="px-6 py-4 text-center border-r border-yellow-500/20">
+                                  {physicsUrl ? (
+                                    <button
+                                      onClick={() => handleDownloadClick("Physics", physicsUrl)}
+                                      className="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
+                                    >
+                                      <Download size={16} />
+                                      <span>Download</span>
+                                    </button>
+                                  ) : (
+                                    <span className="px-4 py-2 bg-gray-700/50 text-gray-500 rounded-lg text-sm font-semibold cursor-not-allowed">
+                                      Available Soon
+                                    </span>
+                                  )}
+                                </td>
+                                <td className="px-6 py-4 text-center border-r border-yellow-500/20">
+                                  {chemistryUrl ? (
+                                    <button
+                                      onClick={() => handleDownloadClick("Chemistry", chemistryUrl)}
+                                      className="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg hover:bg-green-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
+                                    >
+                                      <Download size={16} />
+                                      <span>Download</span>
+                                    </button>
+                                  ) : (
+                                    <span className="px-4 py-2 bg-gray-700/50 text-gray-500 rounded-lg text-sm font-semibold cursor-not-allowed">
+                                      Available Soon
+                                    </span>
+                                  )}
+                                </td>
+                                <td className="px-6 py-4 text-center">
+                                  {mathsUrl ? (
+                                    <button
+                                      onClick={() => handleDownloadClick("Mathematics", mathsUrl)}
+                                      className="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-semibold inline-flex items-center space-x-2"
+                                    >
+                                      <Download size={16} />
+                                      <span>Download</span>
+                                    </button>
+                                  ) : (
+                                    <span className="px-4 py-2 bg-gray-700/50 text-gray-500 rounded-lg text-sm font-semibold cursor-not-allowed">
+                                      Available Soon
+                                    </span>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })}
                         </>
                       )
                     )}
