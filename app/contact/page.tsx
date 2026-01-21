@@ -21,17 +21,38 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("https://studentsparadise-backend.onrender.com/api/enquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          courseName: formData.course || "General Inquiry",
+          businessName: "Students Paradise",
+          message: formData.message,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setSubmitted(true);
-
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", course: "", message: "" });
-    }, 3000);
+      if (response.ok) {
+        setSubmitted(true);
+        // Reset after 3 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+          setFormData({ name: "", email: "", phone: "", course: "", message: "" });
+        }, 3000);
+      } else {
+        alert("Failed to submit. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to submit. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (

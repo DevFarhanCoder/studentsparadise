@@ -15,8 +15,8 @@ export interface CourseDetail {
 }
 
 export const courseDetails: { [key: string]: CourseDetail } = {
-  "jee-preparation": {
-    slug: "jee-preparation",
+  "jee-preparation-course-mumbai": {
+    slug: "jee-preparation-course-mumbai",
     title: "JEE Main & Advanced Preparation",
     category: "Competitive",
     duration: "1-2 Years",
@@ -54,8 +54,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "Rajesh Kumar, Founder",
     fees: "Contact for details",
   },
-  "neet-preparation": {
-    slug: "neet-preparation",
+  "neet-preparation-course-mumbai": {
+    slug: "neet-preparation-course-mumbai",
     title: "NEET Preparation",
     category: "Competitive",
     duration: "1-2 Years",
@@ -91,8 +91,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "Priya Sharma, Co-Founder",
     fees: "Contact for details",
   },
-  "full-stack-web-development": {
-    slug: "full-stack-web-development",
+  "full-stack-web-development-course-mumbai": {
+    slug: "full-stack-web-development-course-mumbai",
     title: "Full Stack Web Development",
     category: "IT",
     duration: "6 Months",
@@ -133,8 +133,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "Rajesh Kumar, Founder",
     fees: "₹45,000 (Installment options available)",
   },
-  "mern-stack-development": {
-    slug: "mern-stack-development",
+  "mern-stack-development-course-mumbai": {
+    slug: "mern-stack-development-course-mumbai",
     title: "MERN Stack Development",
     category: "IT",
     duration: "4 Months",
@@ -173,8 +173,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "Priya Sharma, Co-Founder",
     fees: "₹40,000",
   },
-  "python-aiml": {
-    slug: "python-aiml",
+  "python-aiml-course-mumbai": {
+    slug: "python-aiml-course-mumbai",
     title: "Python & AI/ML",
     category: "IT",
     duration: "5 Months",
@@ -213,10 +213,10 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "Rajesh Kumar, Founder",
     fees: "₹50,000",
   },
-  "11th-12th-science": {
-    slug: "11th-12th-science",
+  "11th-12th-science-course-mumbai": {
+    slug: "11th-12th-science-course-mumbai",
     title: "11th & 12th Science",
-    category: "School",
+    category: "College",
     duration: "2 Years",
     description:
       "Complete coaching for Physics, Chemistry, Mathematics and Biology with experienced faculty and comprehensive study material.",
@@ -252,10 +252,10 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. RIZWAN, Founder",
     fees: "₹60,000 per year",
   },
-  "11th-12th-commerce": {
-    slug: "11th-12th-commerce",
+  "11th-12th-commerce-course-mumbai": {
+    slug: "11th-12th-commerce-course-mumbai",
     title: "11th & 12th Commerce",
-    category: "School",
+    category: "College",
     duration: "2 Years",
     description:
       "Expert guidance for Accountancy, Business Studies, Economics with practical knowledge and exam-focused preparation.",
@@ -291,8 +291,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹50,000 per year",
   },
-  "jee-main-advanced": {
-    slug: "jee-main-advanced",
+  "jee-main-advanced-course-mumbai": {
+    slug: "jee-main-advanced-course-mumbai",
     title: "JEE Main & Advanced",
     category: "Competitive",
     duration: "1-2 Years",
@@ -330,8 +330,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. RIZWAN, Founder",
     fees: "₹80,000",
   },
-  "foundation-courses": {
-    slug: "foundation-courses",
+  "foundation-courses-course-mumbai": {
+    slug: "foundation-courses-course-mumbai",
     title: "Foundation Courses",
     category: "Competitive",
     duration: "1-2 Years",
@@ -369,8 +369,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. RIZWAN, Founder",
     fees: "₹40,000 per year",
   },
-  "bba-program-support": {
-    slug: "bba-program-support",
+  "bba-program-support-course-mumbai": {
+    slug: "bba-program-support-course-mumbai",
     title: "BBA Program Support",
     category: "Commerce",
     duration: "3 Years",
@@ -410,8 +410,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹45,000 per year",
   },
-  "business-management": {
-    slug: "business-management",
+  "business-management-course-mumbai": {
+    slug: "business-management-course-mumbai",
     title: "Business Management",
     category: "Commerce",
     duration: "6 Months",
@@ -451,8 +451,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹35,000",
   },
-  "data-science-analytics": {
-    slug: "data-science-analytics",
+  "data-science-analytics-course-mumbai": {
+    slug: "data-science-analytics-course-mumbai",
     title: "Data Science & Analytics",
     category: "IT",
     duration: "6 Months",
@@ -492,8 +492,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹55,000",
   },
-  "cloud-computing-awsazure": {
-    slug: "cloud-computing-awsazure",
+  "cloud-computing-awsazure-course-mumbai": {
+    slug: "cloud-computing-awsazure-course-mumbai",
     title: "Cloud Computing (AWS/Azure)",
     category: "IT",
     duration: "3 Months",
@@ -533,8 +533,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹40,000",
   },
-  "mobile-app-development": {
-    slug: "mobile-app-development",
+  "mobile-app-development-course-mumbai": {
+    slug: "mobile-app-development-course-mumbai",
     title: "Mobile App Development",
     category: "IT",
     duration: "4 Months",
@@ -574,8 +574,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹45,000",
   },
-  "uiux-design": {
-    slug: "uiux-design",
+  "uiux-design-course-mumbai": {
+    slug: "uiux-design-course-mumbai",
     title: "UI/UX Design",
     category: "IT",
     duration: "3 Months",
@@ -615,8 +615,8 @@ export const courseDetails: { [key: string]: CourseDetail } = {
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹30,000",
   },
-  "bcamcabsc-it-support": {
-    slug: "bcamcabsc-it-support",
+  "bcamcabsc-it-support-course-mumbai": {
+    slug: "bcamcabsc-it-support-course-mumbai",
     title: "BCA/MCA/BSc IT Support",
     category: "IT",
     duration: "Ongoing",
@@ -655,5 +655,46 @@ export const courseDetails: { [key: string]: CourseDetail } = {
       "Your degree is just the beginning. We ensure you have both academic excellence and industry-ready skills.",
     founderName: "MD. FARHAN, Co-Founder",
     fees: "₹25,000 per semester",
+  },
+  "cet-preparation-course-mumbai": {
+    slug: "cet-preparation-course-mumbai",
+    title: "CET Preparation",
+    category: "Competitive",
+    duration: "2 Years",
+    description:
+      "Complete preparation for Common Entrance Test with expert coaching in Physics, Chemistry, Mathematics and Biology.",
+    fullDescription:
+      "Our CET preparation program is designed for students aspiring to crack Maharashtra CET and other state-level entrance exams. With experienced faculty, comprehensive study material, regular mock tests, and personalized mentorship, we ensure excellent results.",
+    eligibility: "Students in 12th or 12th Pass",
+    syllabus: [
+      "Physics: Mechanics, Heat & Thermodynamics, Electromagnetism, Modern Physics",
+      "Chemistry: Physical Chemistry, Organic Chemistry, Inorganic Chemistry",
+      "Mathematics: Algebra, Calculus, Trigonometry, Coordinate Geometry",
+      "Biology: Botany and Zoology (for Medical aspirants)",
+      "Regular Mock Tests following CET pattern",
+      "Previous Year Papers with solutions",
+      "Quick revision techniques",
+    ],
+    highlights: [
+      "Expert faculty with proven CET results",
+      "State board syllabus aligned preparation",
+      "Regular full-length mock tests",
+      "Topic-wise tests and assessments",
+      "Comprehensive study material",
+      "Doubt clearing sessions",
+      "Performance tracking and analysis",
+      "Previous year question papers",
+    ],
+    careerOpportunities: [
+      "Engineering admissions in Maharashtra colleges",
+      "Medical admissions through CET",
+      "Pharmacy courses",
+      "Agriculture programs",
+      "Government college admissions",
+    ],
+    founderMessage:
+      "CET is your gateway to top colleges in Maharashtra. Our focused preparation strategy ensures you maximize your score and secure admission in your dream college.",
+    founderName: "Rajesh Kumar, Founder",
+    fees: "Contact for details",
   },
 };

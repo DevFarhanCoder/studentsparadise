@@ -7,14 +7,14 @@ export const courses: Course[] = [
     description:
       "Complete coaching for Physics, Chemistry, Mathematics and Biology with experienced faculty and comprehensive study material.",
     duration: "2 Years",
-    category: "School",
+    category: "College",
   },
   {
     title: "11th & 12th Commerce",
     description:
       "Expert guidance for Accountancy, Business Studies, Economics with practical knowledge and exam-focused preparation.",
     duration: "2 Years",
-    category: "School",
+    category: "College",
   },
   // Competitive Exams
   {
@@ -29,6 +29,13 @@ export const courses: Course[] = [
     description:
       "Comprehensive medical entrance coaching covering Biology, Physics, and Chemistry with focus on conceptual clarity.",
     duration: "1-2 Years",
+    category: "Competitive",
+  },
+  {
+    title: "CET Preparation",
+    description:
+      "Complete preparation for Common Entrance Test with expert coaching in Physics, Chemistry, Mathematics and Biology.",
+    duration: "2 Years",
     category: "Competitive",
   },
   {

@@ -94,8 +94,8 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
               >
-                Your Complete Education & Career Partner — From School Excellence to Competitive
-                Exam Success to IT Mastery
+                Your Complete Education & Career Partner in Mira Bhayandar — From School Excellence
+                to Competitive Exam Success to IT Mastery
               </motion.p>
 
               <motion.div
@@ -126,7 +126,7 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right Content - Founder Image (Desktop only) */}
+            {/* Right Content - Image (Desktop only) */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -249,7 +249,7 @@ export default function Home() {
               const courseSlug = slugify(course.title);
 
               return (
-                <Link key={course.title} href={`/students-paradise/courses/${courseSlug}`}>
+                <Link key={course.title} href={`/courses/${courseSlug}`}>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}

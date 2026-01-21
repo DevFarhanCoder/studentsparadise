@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Clock, GraduationCap } from "lucide-react";
+import { Clock } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import { courses } from "@/data/studentsParadise";
@@ -10,7 +10,7 @@ import { slugify } from "@/lib/slugify";
 
 const categories = [
   { id: "all", label: "All Programs" },
-  { id: "School", label: "School (11th/12th)" },
+  { id: "College", label: "College (11th/12th)" },
   { id: "Competitive", label: "Competitive Exams" },
   { id: "Commerce", label: "Commerce" },
   { id: "IT", label: "IT & Computer" },
@@ -77,7 +77,7 @@ export default function CoursesPage() {
               const courseSlug = slugify(course.title);
 
               return (
-                <Link key={course.title} href={`/students-paradise/courses/${courseSlug}`}>
+                <Link key={course.title} href={`/courses/${courseSlug}`}>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -133,10 +133,10 @@ export default function CoursesPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Can't Find What You're Looking For?
+              Can&apos;t Find What You&apos;re Looking For?
             </h2>
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Contact us to discuss your specific learning needs and we'll create a customized
+              Contact us to discuss your specific learning needs and we&apos;ll create a customized
               program for you.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">

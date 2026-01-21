@@ -116,8 +116,8 @@ export default function CourseDetailPage() {
             </div>
 
             {/* JEE Main Resources - Only show for JEE related courses */}
-            {(slug === "jee-main-advanced-mira-bhayandar" ||
-              slug === "jee-preparation-mira-bhayandar") && (
+            {(slug === "jee-main-advanced-course-mumbai" ||
+              slug === "jee-preparation-course-mumbai") && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

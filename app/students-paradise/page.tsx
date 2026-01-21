@@ -23,6 +23,7 @@ export default function StudentsParadise() {
       ? courses
       : courses.filter((course) => course.category === selectedCategory);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const iconMap: { [key: string]: any } = {
     Users,
     Building,
@@ -243,7 +244,7 @@ export default function StudentsParadise() {
               );
 
               return hasDetailPage ? (
-                <Link key={course.title} href={`/students-paradise/courses/${courseSlug}`}>
+                <Link key={course.title} href={`/courses/${courseSlug}`}>
                   {CardContent}
                 </Link>
               ) : (
@@ -319,6 +320,7 @@ export default function StudentsParadise() {
                   whileHover={{ scale: 1.05 }}
                   className="relative aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
                 >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/${image}`}
                     alt={`Gallery ${image}`}
@@ -338,6 +340,7 @@ export default function StudentsParadise() {
                 whileHover={{ scale: 1.05 }}
                 className="relative aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`/${num}.${num <= 3 ? "jpeg" : "jpg"}`}
                   alt={`Gallery ${num}`}
@@ -377,8 +380,9 @@ export default function StudentsParadise() {
                   ))}
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 mb-4 italic">
-                  "The teaching methodology and support from Students Paradise helped me achieve my
-                  dream of cracking JEE Advanced. Highly recommended for serious students!"
+                  &quot;The teaching methodology and support from Students Paradise helped me
+                  achieve my dream of cracking JEE Advanced. Highly recommended for serious
+                  students!&quot;
                 </p>
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500" />

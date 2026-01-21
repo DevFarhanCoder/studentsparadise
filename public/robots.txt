@@ -7,7 +7,7 @@ Disallow: /api/
 Disallow: /admin/
 
 # Sitemap location
-Sitemap: https://studentsparadise.edu/sitemap.xml
+Sitemap: https://studentsparadise.in/sitemap.xml
 
 # Allow search engines to crawl all educational content
 Allow: /courses/
@@ -15,6 +15,11 @@ Allow: /students-paradise/
 Allow: /about/
 Allow: /contact/
 Allow: /gallery/
+Allow: /jee-main/
+Allow: /jee-main-answer-key/
+Allow: /jee-main-syllabus/
+Allow: /jee-main-previous-papers/
+Allow: /jee-main-mock-tests/
 
 # Crawl delay (optional, adjust as needed)
 Crawl-delay: 1
