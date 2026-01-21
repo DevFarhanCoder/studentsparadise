@@ -5,20 +5,14 @@
   "installCommand": "npm install",
   "redirects": [
     {
-      "source": "https://www.studentsparadise.in/:path*",
+      "source": "/www.studentsparadise.in/:path*",
       "destination": "https://studentsparadise.in/:path*",
       "permanent": true
     }
   ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "headers": [
         {
           "key": "X-Content-Type-Options",
